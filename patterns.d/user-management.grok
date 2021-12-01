@@ -1,15 +1,15 @@
-USERMOD_CHANGE (?<account_action>change) user '%{USER:account_name}' %{WORD:account_attribute}( from '%{DATA:account_from}' to '%{DATA:account_to}')?
-USERMOD_GROUP_MEMBERSHIP (?<[system][user_management][account][action]>add|delete) '%{USER:[system][user_management][account][name]}' (?:to|from) %{DATA:[system][user_management][account][grouptype]} '%{DATA:[system][user_management][account][groupname]}'
+USERMOD_CHANGE (?<[system][user_management][account][action]>change) user '%{USER:[system][user_management][account][name]}' %{WORD:[system][user_management][account][attribute]}( from '%{DATA:[system][user_management][account][from]}' to '%{DATA:[system][user_management][account][to]}')?
+USERMOD_GROUP_MEMBERSHIP (?<[system][user_management][account][action]>add|delete) '%{USER:[system][user_management][account][name]}' (?:to|from) %{DATA:[system][user_management][account][group][type]} '%{DATA:[system][user_management][account][group][name]}'
 USERMOD %{USERMOD_CHANGE}|%{USERMOD_GROUP_MEMBERSHIP}
 
 NEW_ACCOUNT new %{DATA:[system][user_management][account][type]}:\s+%{GREEDYDATA:[system][user_management][account][kvdata]}
 ACCOUNT_ADD %{NEW_ACCOUNT}|%{USERMOD_GROUP_MEMBERSHIP}
 
-USERDEL_USER (?<account_action>delete) user '%{USER:account_name}'
-USERDEL_GROUP (?<account_action>remove)d %{DATA:account_grouptype} '%{DATA:account_groupname}' owned by '%{DATA:account_groupowner}'
-USERDEL_GROUP_DELUSER (?<account_action>delete) '%{USER:account_name}' from %{DATA:account_grouptype} '%{DATA:account_groupname}'
+USERDEL_USER (?<[system][user_management][account][action]>delete) user '%{USER:[system][user_management][account][name]}'
+USERDEL_GROUP (?<[system][user_management][account][action]>remove)d %{DATA:[system][user_management][account][group][type]} '%{DATA:[system][user_management][account][group][name]}' owned by '%{DATA:[system][user_management][account][group][owner]}'
+USERDEL_GROUP_DELUSER (?<[system][user_management][account][action]>delete) '%{USER:[system][user_management][account][name]}' from %{DATA:[system][user_management][account][group][type]} '%{DATA:[system][user_management][account][group][name]}'
 USERDEL %{USERDEL_USER}|%{USERDEL_GROUP}|%{USERDEL_GROUP_DELUSER}
 
-GROUPDEL %{DATA:account_type} '%{USER:account_name}' removed( from %{GREEDYDATA:account_repository})?
+GROUPDEL %{DATA:[system][user_management][account][type]} '%{USER:[system][user_management][account][name]}' removed( from %{GREEDYDATA:[system][user_management][account][repository]})?
 
-# TODO: groupmod, chage, chfn
+# yang belum : groupmod, chage, chfn
