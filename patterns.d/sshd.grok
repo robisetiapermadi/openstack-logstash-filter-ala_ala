@@ -1,4 +1,4 @@
-SSH_AUTHFAIL_WRONGUSER Invalid user %{USERNAME:system.auth.user} from %{IP:system.auth.ip} port %{NUMBER:system.auth.port}
-SSH_AUTHFAIL_WRONGCREDS Failed %{WORD:system.auth.method} for %{USERNAME:system.auth.user} from %{IP:system.auth.ip} port %{NUMBER:system.auth.port} (?<system.auth.protocol>\w+\d+)
+SSH_AUTHFAIL_WRONGUSER Invalid user %{USERNAME:[system][auth][user]} from %{IP:[system][auth][ip]} port %{NUMBER:[system][auth][port]}
+SSH_AUTHFAIL_WRONGCREDS Failed %{WORD:[system][auth][method]} for %{USERNAME:[system][auth][user]} from %{IP:[system][auth][ip]} port %{NUMBER:[system][auth][port]} (?<[system][auth][protocol]>\w+\d+)
 SSH_AUTH_SUCCESS Accepted %{WORD:[system][auth][method]} for %{USERNAME:[system][auth][user]} from %{IP:[system][auth][ip]} port %{NUMBER:[system][auth][port]} %{WORD:[system][auth][protocol]}?(: %{GREEDYDATA:[system][auth][pubkey]})?
-SSH_DISCONNECT Disconnected from user %{USERNAME:system.auth.user} %{IP:system.auth.ip} port %{INT:system.auth.port}
+SSH_DISCONNECT Disconnected from user %{USERNAME:[system][auth][user]} %{IP:[system][auth][ip]} port %{INT:[system][auth][port]}
