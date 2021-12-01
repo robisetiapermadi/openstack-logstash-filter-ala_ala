@@ -10,6 +10,6 @@ USERDEL_GROUP (?<[system][user_management][account][action]>remove)d %{DATA:[sys
 USERDEL_GROUP_DELUSER (?<[system][user_management][account][action]>delete) '%{USER:[system][user_management][account][name]}' from %{DATA:[system][user_management][account][group][type]} '%{DATA:[system][user_management][account][group][name]}'
 USERDEL %{USERDEL_USER}|%{USERDEL_GROUP}|%{USERDEL_GROUP_DELUSER}
 
-GROUPDEL %{DATA:[system][user_management][account][type]} '%{USER:[system][user_management][account][name]}' removed( from %{GREEDYDATA:[system][user_management][account][repository]})?
+GROUPDEL : %{DATA:[system][user_management][account][type]} '%{USER:[system][user_management][account][name]}' removed( from %{GREEDYDATA:[system][user_management][account][repository]})?
 
 # yang belum : groupmod, chage, chfn
