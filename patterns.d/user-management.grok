@@ -1,8 +1,8 @@
 USERMOD_CHANGE (?<account_action>change) user '%{USER:account_name}' %{WORD:account_attribute}( from '%{DATA:account_from}' to '%{DATA:account_to}')?
-USERMOD_GROUP_MEMBERSHIP (?<account_action>add|delete) '%{USER:account_name}' (?:to|from) %{DATA:account_grouptype} '%{DATA:account_groupname}'
+USERMOD_GROUP_MEMBERSHIP (?<[system][user_management][account][action]>add|delete) '%{USER:[system][user_management][account][name]}' (?:to|from) %{DATA:[system][user_management][account][grouptype]} '%{DATA:[system][user_management][account][groupname]}'
 USERMOD %{USERMOD_CHANGE}|%{USERMOD_GROUP_MEMBERSHIP}
 
-NEW_ACCOUNT new %{DATA:account_type}:\s+%{GREEDYDATA:account_kvdata}
+NEW_ACCOUNT new %{DATA:[system][user_management][account][type]}:\s+%{GREEDYDATA:[system][user_management][account][kvdata]}
 ACCOUNT_ADD %{NEW_ACCOUNT}|%{USERMOD_GROUP_MEMBERSHIP}
 
 USERDEL_USER (?<account_action>delete) user '%{USER:account_name}'
